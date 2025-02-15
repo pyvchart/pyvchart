@@ -31,6 +31,9 @@
 # Install
 # 【❕Note❕】Currently, it cannot be used because there is an old, unmaintained project with a similar name on PyPI, and it is temporarily unable to upload the wheel to PyPI.
 $ pip install pyvchart -U
+
+# Temporary Solution
+$ pip install git+https://github.com/pyvchart/pyvchart@v0.1.0
 ```
 
 

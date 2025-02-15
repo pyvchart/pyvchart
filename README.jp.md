@@ -30,8 +30,10 @@
 ```shell
 # インストール
 # 【❕注意❕】現在、PyPI に長期間メンテナンスされていない同名のプロジェクトが存在するため、wheel を PyPI にアップロードすることができません。
-これらの翻訳が適切かご確認ください。
 $ pip install pyvchart -U
+
+# 一時的な解決策
+$ pip install git+https://github.com/pyvchart/pyvchart@v0.1.0
 ```
 
 
