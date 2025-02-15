@@ -29,6 +29,7 @@
 **pip 安装**
 ```shell
 # 安装
+# 目前暂时用不了，因为 PyPI 中存在一个较长时间没有维护且类似名字的项目，暂时无法上传 wheel 到 PyPI 中。
 $ pip install pyvchart -U
 ```
 
