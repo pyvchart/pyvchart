@@ -248,7 +248,7 @@ TEST_DATA_DOT_SERIES_DATA = [
             {
                 "event_time": 1662331123,
                 "node_name": "bcb395f84ae8882de39d2a8e68d459c177a7b5a0b"
-                             "6884047b0fce1f28d21xxxx_1662331123_binding_email",
+                "6884047b0fce1f28d21xxxx_1662331123_binding_email",
                 "action_type": "binding_email",
                 "children": [{"action_type": "binding_email"}],
             }
@@ -1280,7 +1280,7 @@ TEST_DATA_LINK_SERIES_DATA = [
     {
         "from": "683827468797481xxxx_1662331123_binding_email",
         "to": "bcb395f84ae8882de39d2a8e68d459c177a7b5a0b6"
-              "884047b0fce1f28d21xxxx_1662331123_binding_email",
+        "884047b0fce1f28d21xxxx_1662331123_binding_email",
         "action_type": "binding_email",
         "children": [{"action_type": "binding_email"}],
     },

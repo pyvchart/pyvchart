@@ -6,7 +6,7 @@ os.system(
 )
 
 # pytest
-os.system("pytest -cov-config=.coveragerc --cov=./ test/")
+os.system("pytest --cov-branch --cov-report=xml -cov-config=.coveragerc --cov=./ test/")
 
 # flake8 for code linting
 os.system("flake8 --exclude=build,example,images --max-line-length=89 --ignore=F401")

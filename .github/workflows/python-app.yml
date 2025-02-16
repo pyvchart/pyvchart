@@ -27,6 +27,7 @@ jobs:
         run: |
           python setup.py install
           python test.py
-      - name: Codecov
-        run: |
-          codecov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

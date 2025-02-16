@@ -395,7 +395,7 @@ class TestTreemapChart(unittest.TestCase):
                 title_opts=opts.TitleOpts(
                     is_visible=True,
                     text="The software class hierarchy of the "
-                         "Flare visualization toolkit",
+                    "Flare visualization toolkit",
                 )
             )
         )
