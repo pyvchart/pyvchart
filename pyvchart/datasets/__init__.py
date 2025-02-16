@@ -87,15 +87,10 @@ class FuzzyDict(dict):
 
 
 __HERE = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(__HERE, "map_filename.json"), "r", encoding="utf8") as f:
+with open(os.path.join(__HERE, "filename.json"), "r", encoding="utf8") as f:
     FILENAMES: FuzzyDict = FuzzyDict()
     for k, v in json.load(f).items():
         FILENAMES[k] = v
-
-with open(os.path.join(__HERE, "city_coordinates.json"), "r", encoding="utf8") as f:
-    COORDINATES: FuzzyDict = FuzzyDict()
-    for k, v in json.load(f).items():
-        COORDINATES[k] = v
 
 EXTRA = {}
 
@@ -131,8 +126,3 @@ def register_url(asset_url: str):
 def register_files(asset_files: dict):
     if asset_files:
         FILENAMES.update(asset_files)
-
-
-def register_coords(coords: dict):
-    if coords:
-        COORDINATES.update(coords)

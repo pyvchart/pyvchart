@@ -7,7 +7,6 @@ from pyvchart.datasets import (
     FuzzyDict,
     register_url,
     register_files,
-    register_coords,
 )
 
 
@@ -62,9 +61,6 @@ class TestDatasets(unittest.TestCase):
 
     def test_register_files(self):
         register_files(asset_files={"x": 1})
-
-    def test_register_coords(self):
-        register_coords(coords={"深圳": [113, 23]})
 
     def test_type_error_with_non_string_key(self):
         fd = FuzzyDict()

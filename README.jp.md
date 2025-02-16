@@ -1,11 +1,21 @@
+<p align="center">
+    <img src="https://avatars.githubusercontent.com/u/198329724?s=400&u=4b7f5199e38683f090e3be8e17cd8050bfe7c0c9&v=4" alt="pyvchart logo" width=200 height=200 />
+</p>
 <h1 align="center">pyvchart</h1>
 <p align="center">
     <em>Python ❤️ VChart = pyvchart</em>
 </p>
-
 <p align="center">
+    <a href="https://github.com/pyvchart/pyvchart/actions">
+        <img src="https://github.com/pyvchart/pyvchart/actions/workflows/python-app.yml/badge.svg" alt="Github Actions Status">
+    </a>
+</p>
+<p align="center">
+    <a href="https://github.com/pyvchart/pyvchart/pulls">
+        <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
+    </a>
     <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="ライセンス">
+        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License">
     </a>
 </p>
 
@@ -49,7 +59,7 @@ $ python setup.py install
 
 ## 📝 使用方法
 
-...TODO
+使用例はここにあります：[Examples](https://github.com/pyvchart/chart-examples)
 
 ## ⛏ コード品質
 
