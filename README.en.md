@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://avatars.githubusercontent.com/u/198329724?s=400&u=4b7f5199e38683f090e3be8e17cd8050bfe7c0c9&v=4" alt="pyvchart logo" width=200 height=200 />
+    <img src="https://github.com/VisActor/.github/raw/main/profile/logo_500_200_dark.svg" alt="pyvchart logo" width=200 height=200 />
 </p>
 <h1 align="center">pyvchart</h1>
 <p align="center">
