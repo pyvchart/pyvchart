@@ -1,10 +1,11 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Histogram
 from pyvchart.commons.utils import JsCode
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 
 TEST_HISTOGRAM_DATA = [
@@ -69,8 +70,8 @@ TEST_HISTOGRAM_DATA = [
 
 class TestHistogramChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_histogram_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.HISTOGRAM)
+    def test_histogram_base(self):
         c = (
             Histogram()
             .set_data(data=[opts.BaseDataOpts(values=TEST_HISTOGRAM_DATA)])
@@ -97,7 +98,4 @@ class TestHistogramChart(unittest.TestCase):
                 ),
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.HISTOGRAM)
+        return c

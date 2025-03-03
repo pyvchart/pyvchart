@@ -1,9 +1,10 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Bar3D
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 TEST_BAR3D_DATA = [
     {"month": "Monday", "sales": 22},
@@ -16,8 +17,8 @@ TEST_BAR3D_DATA = [
 
 class TestBar3DChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_bar3d_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.BAR3D)
+    def test_bar3d_base(self):
         c = (
             Bar3D()
             .set_data(
@@ -60,7 +61,5 @@ class TestBar3DChart(unittest.TestCase):
                 ]
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.BAR3D)
+
+        return c

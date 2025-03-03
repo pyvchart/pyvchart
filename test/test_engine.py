@@ -1,10 +1,11 @@
 import os
 import unittest
 
+from pyvchart import render_chart
 from pyvchart.charts import Bar
 from pyvchart.render.engine import RenderEngine, write_utf8_html_file
 from pyvchart.datasets import EXTRA, FILENAMES
-from pyvchart.globals import CurrentConfig
+from pyvchart.globals import CurrentConfig, ChartType
 
 
 class TestEngine(unittest.TestCase):
@@ -57,6 +58,30 @@ class TestEngine(unittest.TestCase):
             written_content = file.read()
 
         self.assertEqual(written_content, html_content)
+
+    def test_render_chart(self):
+        spec = {
+            "type": 'bar',
+            "data": [
+                {
+                    "id": 'barData',
+                    "values": [
+                        {"month": 'Monday', "sales": 22},
+                        {"month": 'Tuesday', "sales": 13},
+                        {"month": 'Wednesday', "sales": 25},
+                        {"month": 'Thursday', "sales": 29},
+                        {"month": 'Friday', "sales": 38}
+                    ]
+                }
+            ],
+            "xField": 'month',
+            "yField": 'sales',
+            "crosshair": {
+                "xField": {"visible": True}
+            }
+        }
+        content = render_chart(spec).__html__()
+        self.assertIn(ChartType.BAR, content)
 
     def tearDown(self):
         if os.path.exists(self.test_file_name):

@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Rose

@@ -1,9 +1,10 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import RangeColumn
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 
 TEST_RANGE_COLUMN_DATA = [
@@ -20,8 +21,8 @@ TEST_RANGE_COLUMN_DATA = [
 
 class TestRangeColumnChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_range_column_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.RANGE_COLUMN)
+    def test_range_column_base(self):
         c = (
             RangeColumn()
             .set_data(data=[opts.BaseDataOpts(values=TEST_RANGE_COLUMN_DATA)])
@@ -31,7 +32,4 @@ class TestRangeColumnChart(unittest.TestCase):
             )
             .set_xy_field(x_field_name=["min", "max"], y_field_name="type")
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.RANGE_COLUMN)
+        return c

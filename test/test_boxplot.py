@@ -1,10 +1,10 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Boxplot
 from pyvchart.globals import ChartType
 
+from test import chart_base_test
 
 TEST_BOXPLOT_DATA = [
     {
@@ -53,8 +53,8 @@ TEST_BOXPLOT_DATA = [
 
 class TestBoxplotChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_boxplot_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.BOXPLOT)
+    def test_boxplot_base(self):
         c = (
             Boxplot()
             .set_data(data=[opts.BaseDataOpts(values=TEST_BOXPLOT_DATA)])
@@ -72,7 +72,4 @@ class TestBoxplotChart(unittest.TestCase):
                 y_field_name=None,
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.BOXPLOT)
+        return c

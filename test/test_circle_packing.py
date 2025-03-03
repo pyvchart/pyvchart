@@ -1,10 +1,11 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import CirclePacking
 from pyvchart.commons.utils import JsCode
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 
 TEST_CIRCLE_PACKING_DATA = [
@@ -177,8 +178,8 @@ TEST_CIRCLE_PACKING_DATA = [
 
 class TestCirclePackingChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_circle_packing_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.CIRCLE_PACKING)
+    def test_circle_packing_base(self):
         c = (
             CirclePacking()
             .set_data(
@@ -215,7 +216,4 @@ class TestCirclePackingChart(unittest.TestCase):
                 ),
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.CIRCLE_PACKING)
+        return c

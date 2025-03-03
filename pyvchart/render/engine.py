@@ -1,4 +1,6 @@
+import json
 import os
+import uuid
 from collections.abc import Iterable
 
 from jinja2 import Environment
@@ -6,7 +8,7 @@ from jinja2 import Environment
 from ..commons import utils
 from ..datasets import EXTRA, FILENAMES
 from ..globals import CurrentConfig, NotebookType, RenderSepType
-from ..types import Any, Optional
+from ..types import Any, Sequence, Optional
 from .display import HTML, Javascript
 
 
@@ -125,3 +127,65 @@ def load_javascript(chart):
         f, ext = FILENAMES[dep]
         scripts.append("{}{}.{}".format(CurrentConfig.ONLINE_HOST, f, ext))
     return Javascript(lib=scripts)
+
+
+_old_default_colors = [
+    "#009DB5",
+    "#F2B823",
+    "#3DA241",
+    "#1F5273",
+    "#EB6F02",
+    "#76BEC8",
+    "#D44977",
+    "#EF85A7",
+    "#675DAE",
+    "#B6BC65",
+    "#829E0B",
+    "#A6A6E1",
+    "#4A525F",
+    "#87B7DD",
+    "#A13630",
+    "#CB7B48",
+    "#AA7F01",
+    "#E1CA56",
+    "#0F7000",
+    "#7C878D",
+]
+
+
+def render_chart(
+    data: dict,
+    width: str = "100%",
+    height: str = "500px",
+    colors: Optional[Sequence[str]] = None,
+):
+    """ render_chart
+    chart: https://github.com/VisActor/VChart
+    ----------
+        data: json
+            is a json, which can render chart like new VChart(data, {dom: `${domId}`})
+        width: string
+            chart width: 100%, 500px
+        height: string
+            chart height: 100% 500px
+        colors: list
+            chart theme color
+    ----------
+    """
+    if not colors:
+        colors = _old_default_colors
+
+    chart: dict = {
+        "chart_id": uuid.uuid4().hex,
+        "data_source": json.dumps(data),
+        "width": width,
+        "height": height,
+        "colors": colors,
+    }
+
+    return HTML(
+        RenderEngine().render_chart_to_notebook(
+            template_name="jupyter_lab_old.html",
+            chart=chart,
+        )
+    )

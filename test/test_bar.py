@@ -1,9 +1,10 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Bar
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 
 TEST_BAR_DATA = [
@@ -17,8 +18,8 @@ TEST_BAR_DATA = [
 
 class TestBarChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_bar_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.BAR)
+    def test_bar_base(self):
         c = (
             Bar()
             .set_bar_spec()
@@ -28,7 +29,4 @@ class TestBarChart(unittest.TestCase):
                 y_field_name="value",
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.BAR)
+        return c

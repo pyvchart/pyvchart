@@ -9,6 +9,9 @@
     <a href="https://github.com/pyvchart/pyvchart/actions">
         <img src="https://github.com/pyvchart/pyvchart/actions/workflows/python-app.yml/badge.svg" alt="Github Actions Status">
     </a>
+    <a href="https://codecov.io/gh/pyvchart/pyvchart" >
+        <img src="https://codecov.io/gh/pyvchart/pyvchart/branch/main/graph/badge.svg?token=q4Op7n64fK" alt="Codecov"/>
+    </a>
 </p>
 <p align="center">
     <a href="https://github.com/pyvchart/pyvchart/pulls">

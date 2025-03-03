@@ -1,9 +1,10 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Radar
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 
 TEST_RADAR_DATA = [
@@ -18,8 +19,8 @@ TEST_RADAR_DATA = [
 
 class TestRadarChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_radar_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.RADAR)
+    def test_radar_base(self):
         c = (
             Radar()
             .set_data(data=[opts.BaseDataOpts(values=TEST_RADAR_DATA)])
@@ -77,7 +78,4 @@ class TestRadarChart(unittest.TestCase):
                 ]
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.RADAR)
+        return c

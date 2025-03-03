@@ -1,10 +1,11 @@
 import unittest
-from unittest.mock import patch
 
 from pyvchart import options as opts
 from pyvchart.charts import Waterfall
 from pyvchart.commons.utils import JsCode
 from pyvchart.globals import ChartType
+
+from test import chart_base_test
 
 
 TEST_WATERFALL_DATA = [
@@ -28,8 +29,8 @@ TEST_WATERFALL_DATA = [
 
 class TestWaterfallChart(unittest.TestCase):
 
-    @patch("pyvchart.render.engine.write_utf8_html_file")
-    def test_waterfall_base(self, fake_writer):
+    @chart_base_test(chart_type=ChartType.WATERFALL)
+    def test_waterfall_base(self):
         c = (
             Waterfall()
             .set_data(data=[opts.BaseDataOpts(id_="id0", values=TEST_WATERFALL_DATA)])
@@ -69,7 +70,4 @@ class TestWaterfallChart(unittest.TestCase):
                 ],
             )
         )
-        c.render()
-        _, content = fake_writer.call_args[0]
-        self.assertGreater(len(content), 1000)
-        self.assertEqual(c.options.get("type"), ChartType.WATERFALL)
+        return c

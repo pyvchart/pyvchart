@@ -2,7 +2,6 @@ import unittest
 
 from pyvchart import options as opts
 from pyvchart.charts import Liquid
-from pyvchart.commons.utils import JsCode
 from pyvchart.globals import ChartType
 
 from test import chart_base_test
