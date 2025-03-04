@@ -1,3 +1,5 @@
+# Future updates for this repository will be migrated to [py-vchart](https://github.com/visActor/py-vchart).
+
 <p align="center">
     <img src="https://github.com/VisActor/.github/raw/main/profile/logo_500_200_dark.svg" alt="pyvchart logo" width=200 height=200 />
 </p>
